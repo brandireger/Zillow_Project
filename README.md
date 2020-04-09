@@ -6,11 +6,11 @@ This project aims to predict the values of single unit properties using property
 The customer is the Zillow data science team.
 
 ## Deliverables
-1. Presentation: [Link]<https://docs.google.com/presentation/d/1AD6-7jxczQzKK85wtslh7gobS2jAsDsABuZel2Rg3Tk/edit?usp=sharing>
+1. Presentation: [Link] (https://docs.google.com/presentation/d/1AD6-7jxczQzKK85wtslh7gobS2jAsDsABuZel2Rg3Tk/edit?usp=sharing)
     - Must include what state and county the properties are located in
     - Must include distribution of tax rates for each county
     - Summarizes findings about the drivers of property values
-2. Github Repository: [Link](link here)
+2. Github Repository: [Link](https://github.com/brandireger/Zillow_Project)
     - Readme (this file)
     - Final Jupyter notebook walking through the pipeline
     - .py files with all functions necessary to reproduce the model
@@ -18,18 +18,25 @@ The customer is the Zillow data science team.
 ## Pipeline
 
 # Planning
-- $H_0$: Value is not predictable by any features in the dataset
-- $H_a$: Value is predicted best by all features in dataset
-- $H_a$: Value is predicted best by number of beds
-- $H_a$: Value is predicted best by number of baths
-- $H_a$: Value is predicted best by sq feet
+- New Hypotheses:
+    - $H_a$: Engineered features will improve predictions
+- Failed to reject Hypotheses:
+    - $H_a$: Value is predicted best by all features in dataset
+- Rejected Hypotheses:
+    - $H_0$: Value is not predictable by any features in the dataset
+    - $H_a$: Value is predicted best by number of beds
+    - $H_a$: Value is predicted best by number of baths
+    - $H_a$: Value is predicted best by sq feet
 
 - Predictor Features (independent):
     - First model: sq feet, number of bedrooms, number of bathrooms
 
 - Predicted Feature (dependent): 'taxvaluedollarcnt' aka value
 
-- Feature Engineering: (to be done if time allows)
+- Feature Engineering Ideas: 
+    - Combine bathroom and bedrooms into bath_bed
+    - Calculate age of home
+    - Make is_extra column for features like pool, fireplace, hot tub, etc
 
 
 # Acquire Data
@@ -57,8 +64,8 @@ The customer is the Zillow data science team.
         4. square_feet = size of home. Used field 'calculatedfinishedsquarefeet' because it was identical to 'finishedsquarefeet12', the other square feet fields were mostly nulls.
         5. Value = value of property. Used field named 'taxvaluedollarcnt' because it was specified in the project specifications.
         6. tax_amount = amunt of taxes charged. Used field named 'taxamount'.
-        7. county = name of county the property is from. This field came from the fips identifier in the original databse. The website I obtained the names of counties from: [link]<https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697>
-        8. state = name of state. This field came from the fips identifier in the original databse. The website I obtained the names of counties from: [link]<https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697>
+        7. county = name of county the property is from. This field came from the fips identifier in the original databse. The website I obtained the names of counties from: [link] (https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697)
+        8. state = name of state. This field came from the fips identifier in the original databse. The website I obtained the names of counties from: [link] (https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697)
         9. tax_rate = calculated field created by dividing the value of the property by the tax_amount.
 
 # Split & Scale
